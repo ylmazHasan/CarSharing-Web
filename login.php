@@ -1,33 +1,37 @@
- <?php 
+ <?php
  include  'baglan.php';
- include 'khead.php'; 
-    // Form Gönderilmişmi Kontrolü Yapalım 
+ include 'khead.php';
+    // Form Gönderilmişmi Kontrolü Yapalım
+ $baglan=mysqli_connect("localhost","root","12345678","carsharingdb");
     // Veritabanı Insert işlemleri Başlangıç.
-        if(isset($_POST['register'])){
-            // Formdan Gelen Kayıtlar
-            $kad= $_POST["kad"];
-            $ad= $_POST["ad"];
-            $soyad= $_POST["soyad"];
-            $email= $_POST["email"];
-            $tc= $_POST["tc"];
-            $telno= $_POST["telno"];
-            $parola= $_POST["parola"]; 
-            if (empty($kad)||empty($ad)) {
-            	echo "Alanları boş geçmeyınız";
-            }
-            else{
-            	 // Veritabanına Ekleyelim.
-            $kaydet= mysql_query("INSERT INTO hesapacdb(kad,ad,soyad,email,tc,telno,parola) values('$kad','$ad','$soyad','$email','$tc','$telno','$parola')");
-         if($kaydet){
-   			   header(sprintf("Location: " .$_SERVER['login.php']));
- 		}
-		 else{
-   		  echo "İşlem başarısız..";
- 		    }
-            }           
-        } 
+ if (isset($_POST['login'])) {
+
+  $email = $_POST['email'];
+  $parola = $_POST['parola'];
+  if (empty($email) || empty($parola)) {
+    $bilgi_email="*Boş geçmeyiniz alanları";
+
+  } else {
+        //$email = $con->escape_string($_POST['email']);
+    $sonuc ="SELECT * FROM hesapacdb WHERE email='$email' AND parola='$parola' ";
+    $result = mysqli_query($baglan,$sonuc);
+    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+    $active = $row['active'];
+    $count= mysqli_num_rows($result);
+    if($count == 1){
+      session_start();
+      $userad=$row['id'];
+      var_dump($userad);
+      $_SESSION["user_id"]=$userad;
+      header('Location: index.php');
+    }
+    else{
+      $bilgi_email="E-mail veya parola yanlıştır";
+    }
+  }
+}
         //Veritabanı Insert işlemleri Son.
-   ?>
+?>
 <body class="login">
   <div>
     <a class="hiddenanchor" id="signup"></a>
@@ -36,28 +40,27 @@
     <div class="login_wrapper">
       <div class="animate form login_form">
         <section class="login_content">
-          <form>
+          <form action="login.php" method="post">
             <h1>Kullanıcı Giriş Paneli</h1>
-          
-            <div>
-              <input type="text" name="dfdsfds" class="form-control" placeholder="Email" required="" />
-            </div>
-     
-          
-            <div>
-              <input type="parola" class="form-control" placeholder="Parola" required="" />
-            </div>
-           
-            <div>
-              <a class="btn btn-default submit" name="admingiris" href="index.php">Giriş Yap</a>
 
+            <div>
+              <input type="text" name="email" class="form-control" placeholder="Email" required="" />
+            </div>
+
+
+            <div>
+              <input type="parola" name="parola" class="form-control" placeholder="Parola" required="" />
+            </div>
+
+            <div>
+              <button  type="submit" name="login">Giriş Yap</button>
             </div>
 
             <div class="clearfix"></div>
 
             <div class="separator">
               <p class="change_link">Yeni misiniz?
-                <a href="#signup" class="to_register"> Hesap Aç </a>
+                <a href="register.php" class="to_register"> Hesap Aç </a>
               </p>
 
               <div class="clearfix"></div>
@@ -71,55 +74,10 @@
           </form>
         </section>
       </div>
- 
+
       <div id="register" class="animate form registration_form">
         <section class="login_content">
-          <form action="login.php" method="post">
 
-            <h1>Yeni Kayıt</h1>
-            <div>
-              <input type="text" required="" name="kad" placeholder="KullanıcıAdı" />
-            </div>
-            <div>
-              <input type="text" required="" name="ad" placeholder="Ad" />
-            </div>
-            <div>
-              <input type="text" required="" name="soyad"  placeholder="SoyAd" />
-            </div>
-            <div>
-              <input type="text" required="" name="email" placeholder="Email"  />
-            </div>
-            <div>
-              <input type="text" required="" name="tc"  placeholder="TC" />
-            </div>
-             <div>
-              <input type="text" required=""  name="telno" placeholder="Telefon No"  />
-            </div>
-            <div>
-              <input type="text"  required="" name="parola"  placeholder="Parola"  />
-            </div>
-            <br>
-      
-            <div>
-              <button type="submit" name="register">Kaydol</button>  
-            </div>
-
-            <div class="clearfix"></div>
-
-            <div class="separator">
-              <p class="change_link">Zaten bir üye misiniz?
-                <a href="#signin" class="to_register"> Oturum Aç</a>
-              </p>
-
-              <div class="clearfix"></div>
-              <br />
-
-              <div>
-                <h1><i class="fa fa-paw"></i> Kullanıcı Kayıt </h1>
-                <p>©2018 Hasan Yılmaz & Fatih Berber / E-Ticaret Proje</p>
-              </div>
-            </div>
-          </form>
         </section>
       </div>
     </div>

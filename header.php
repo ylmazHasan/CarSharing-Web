@@ -1,3 +1,6 @@
+<?php 
+  include 'baglan.php';
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +49,7 @@
             </div>
             <div class="profile_info">
               <span>Hoşgeldiniz,</span>
-              <h2>Ad-Soyad</h2>
+              <h2></h2>
             </div>
           </div>
           <!-- /menu profile quick info -->
@@ -62,7 +65,7 @@
                 </li>
                  <li><a><i class="fa fa-user"></i> Profil <span class=""></span></a>
                 </li>
-                 <li><a><i class="fa fa-car"></i> Benim Aracım <span class=""></span></a>
+                 <li><a href="car.php"><i class="fa fa-car"></i> Benim Aracım <span class=""></span></a>
                 </li>
                     <li><a><i class="fa fa-send"></i> Geçmiş Yolculuk <span class=""></span></a>
                 </li>
@@ -108,7 +111,7 @@
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
-                <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                <li><a href="login.php"><i class="fa fa-sign-out pull-right"></i>Çıkış Yap</a></li>
                 </ul>
               </li>
             </ul>

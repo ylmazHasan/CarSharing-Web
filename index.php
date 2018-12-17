@@ -1,4 +1,4 @@
- <?php include 'header.php'; 
+ <?php include 'header.php';
  include 'baglan.php';
  ?>
 
@@ -26,18 +26,18 @@
         <div class="x_panel">
           <div class="x_content">
             <div class="row">
-              <p>CarSharing</p>         
-              
-              <?php 
+              <p>CarSharing</p>
+
+              <?php
               $baglan = mysqli_connect("localhost", "root", "12345678", "carsharingdb");
-              $al_kategori = " SELECT * FROM hesapacdb as he INNER JOIN arac as ar WHERE  he.id=ar.parent_hesapid";
-              $sonuc = mysqli_query($baglan, $al_kategori);
+              $al_arac = " SELECT * FROM hesapacdb as he INNER JOIN arac as ar WHERE  he.id=ar.parent_hesapid";
+              $sonuc = mysqli_query($baglan, $al_arac);
               while ($cekilen_veri = mysqli_fetch_array($sonuc)) {
                 $marka = $cekilen_veri['marka'];
                 $fiyat = $cekilen_veri['fiyat'];
                 $aciklama = $cekilen_veri['aciklama'];
                 $image = $cekilen_veri['image'];
-                
+
                 ?>
                 <div class="col-md-55">
                  <div class="thumbnail">
