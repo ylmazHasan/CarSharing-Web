@@ -63,7 +63,7 @@
               <ul class="nav side-menu">
                 <li><a href="index.php"><i class="fa fa-home"></i> Anasayfa <span class=""></span></a>
                 </li>
-                 <li><a><i class="fa fa-user"></i> Profil <span class=""></span></a>
+                 <li><a href="profil.php"><i class="fa fa-user"></i> Profil <span class=""></span></a>
                 </li>
                  <li><a href="car.php"><i class="fa fa-car"></i> Benim Aracım <span class=""></span></a>
                 </li>
@@ -71,7 +71,7 @@
                 </li>
                     <li><a><i class="fa fa-money"></i> Ödemelerim <span class=""></span></a>
                 </li>
-                <li><a><i class="fa fa-wrench"></i> Çıkış Yap <span class=""></span></a>
+                <li><a href="login.php"><i class="fa fa-wrench"></i> Çıkış Yap <span class=""></span></a>
                 </li>
               </ul>
             </div>

@@ -22,42 +22,47 @@
     </div>
     <div class="clearfix"></div>
     <div class="row">
+
+      <p>CarSharing</p>
       <div class="col-md-12">
         <div class="x_panel">
           <div class="x_content">
             <div class="row">
-              <p>CarSharing</p>
+              <div class="col-md-4">
 
-              <?php
-              $baglan = mysqli_connect("localhost", "root", "12345678", "carsharingdb");
-              $al_arac = " SELECT * FROM hesapacdb as he INNER JOIN arac as ar WHERE  he.id=ar.parent_hesapid";
-              $sonuc = mysqli_query($baglan, $al_arac);
-              while ($cekilen_veri = mysqli_fetch_array($sonuc)) {
-                $marka = $cekilen_veri['marka'];
-                $fiyat = $cekilen_veri['fiyat'];
-                $aciklama = $cekilen_veri['aciklama'];
-                $image = $cekilen_veri['image'];
+                <?php
+                $baglan = mysqli_connect("localhost", "root", "12345678", "carsharingdb");
+                $al_arac = " SELECT * FROM hesapacdb as he INNER JOIN arac as ar WHERE  he.id=ar.parent_hesapid";
+                $sonuc = mysqli_query($baglan, $al_arac);
+                while ($cekilen_veri = mysqli_fetch_array($sonuc)) {
+                  $marka = $cekilen_veri['marka'];
+                  $fiyat = $cekilen_veri['fiyat'];
+                  $aciklama = $cekilen_veri['aciklama'];
+                  $image = $cekilen_veri['image'];
 
-                ?>
-                <div class="col-md-55">
-                 <div class="thumbnail">
-                  <div class="image view view-first">
-                    <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
-                  </div>
-                  <div class="caption">
-                    <input type="text" value="<?php echo $cekilen_veri['marka'] ?>">
-                    <input type="text" value="<?php echo $cekilen_veri['fiyat'] ?>">
-                  </div>
-                </div>
+                  ?>
+                  <div class="thumbnail" >
+
+                    <div class="image view view-first">
+                      <img style="width: 100%; display: block;" src="images/media.jpg" alt="image"/> 
+                    </div>
+                    <div class="caption">
+                      <input type="text" value="<?php echo $cekilen_veri['marka'] ?>">
+                      <input type="text" value="<?php echo $cekilen_veri['fiyat'] ?>">
+                        <div class="caption">
+                      <button type="submit">Özellikler</button>
+                    </div>
+                    </div>
+                  </div> 
+                <?php }
+                ?>          
               </div>
             </div>
           </div>
-        <?php }
-        ?>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 <!-- /page content -->
 <!-- /page content -->

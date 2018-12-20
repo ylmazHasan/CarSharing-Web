@@ -4,7 +4,7 @@
 $baglan=mysqli_connect("localhost","root","12345678","carsharingdb");
     // Form Gönderilmişmi Kontrolü Yapalım
     // Veritabanı Insert işlemleri Başlangıç.
-        if(isset($_POST['register'])){
+        if($_POST){
             // Formdan Gelen Kayıtlar
             $kad= $_POST["kad"];
             $ad= $_POST["ad"];
@@ -19,8 +19,9 @@ $baglan=mysqli_connect("localhost","root","12345678","carsharingdb");
             else{
             	 // Veritabanına Ekleyelim.
             $sqlekle= "INSERT INTO hesapacdb(kad,ad,soyad,email,tc,telno,parola) VALUES ('$kad','$ad','$soyad','$email','$tc','$telno','$parola')";
+            $kaydet= mysqli_query($baglan,$sqlekle);
          if($kaydet){
-           $kaydet= mysqli_query($baglan,$sqlekle);
+           
    			   header(sprintf("Location: " .$_SERVER['login.php']));
  		}
 		 else{
@@ -65,7 +66,7 @@ $baglan=mysqli_connect("localhost","root","12345678","carsharingdb");
             <br>
 
             <div>
-              <button type="submit" name="register">Kaydol</button>
+              <button type="submit" name="_POST">Kaydol</button>
             </div>
 
             <div class="clearfix"></div>
