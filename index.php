@@ -31,6 +31,7 @@
               <div class="col-md-4">
 
                 <?php
+               
                 $baglan = mysqli_connect("localhost", "root", "12345678", "carsharingdb");
                 $al_arac = " SELECT * FROM hesapacdb as he INNER JOIN arac as ar WHERE  he.id=ar.parent_hesapid";
                 $sonuc = mysqli_query($baglan, $al_arac);
@@ -49,9 +50,9 @@
                     <div class="caption">
                       <input type="text" value="<?php echo $cekilen_veri['marka'] ?>">
                       <input type="text" value="<?php echo $cekilen_veri['fiyat'] ?>">
-                        <div class="caption">
-                      <button type="submit">Özellikler</button>
-                    </div>
+                      <div class="caption">
+                        <a href="arackirala.php?arac_id=<?php echo $cekilen_veri['arac_id']; ?>"><button type="submit">Özellikler</button></a>
+                      </div>
                     </div>
                   </div> 
                 <?php }

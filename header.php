@@ -65,7 +65,7 @@
                 </li>
                  <li><a href="profil.php"><i class="fa fa-user"></i> Profil <span class=""></span></a>
                 </li>
-                 <li><a href="car.php"><i class="fa fa-car"></i> Benim Aracım <span class=""></span></a>
+                 <li><a href="arac.php"><i class="fa fa-car"></i> Benim Aracım <span class=""></span></a>
                 </li>
                     <li><a><i class="fa fa-send"></i> Geçmiş Yolculuk <span class=""></span></a>
                 </li>

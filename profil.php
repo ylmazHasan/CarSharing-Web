@@ -1,4 +1,6 @@
-<?php 
+<?php
+session_start();
+ 
 include 'header.php';
  include 'baglan.php';
  ?>
@@ -40,10 +42,12 @@ include 'header.php';
           <div class="x_content">
             <br />
             <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-    <?php
-             $baglan = mysqli_connect("localhost", "root", "12345678", "carsharingdb");
-              $al_arac = " SELECT * FROM hesapacdb  WHERE id=3 ";
-              $sonuc = mysqli_query($baglan, $al_arac);
+    <?php 
+              session_start();
+              $user_deger=$_SESSION["user_id"];
+              $baglan = mysqli_connect("localhost", "root", "12345678", "carsharingdb");
+              $profil = " SELECT * FROM hesapacdb  WHERE   id='$user_deger'";
+              $sonuc = mysqli_query($baglan, $profil);
               while ($cekilen_veri = mysqli_fetch_array($sonuc)) {
                 $kad = $cekilen_veri['kad'];
                 $ad = $cekilen_veri['ad'];
