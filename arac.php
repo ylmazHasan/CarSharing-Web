@@ -26,17 +26,10 @@ if(isset($_POST['insert']))
 <?php
 if(isset($_POST['delete']))
 {
-
-  $delete = mysql_query("DELETE FROM arac WHERE arac_id= '$id'");
-
-  if ($delete)
-  {
-    echo "Silme İşlemi Başarılı Bir Şekilde Gerçekleştirildi";
-  }
-  else
-  {
-    echo "Hata";
-  }}
+  session_start();
+  $user_deger=$_SESSION["user_id"]; 
+  $delete = mysql_query("DELETE FROM arac WHERE parent_hesapid='$user_deger'");
+}
   ?>
 
 
@@ -123,7 +116,6 @@ if(isset($_POST['delete']))
       <!--Benim Aracım-->
       <?php 
       session_start();
-
       $user_deger=$_SESSION["user_id"];
       $baglan = mysqli_connect("localhost", "root", "12345678", "carsharingdb");
       $profil = " SELECT * FROM arac  WHERE   parent_hesapid='$user_deger'";
@@ -187,7 +179,6 @@ if(isset($_POST['delete']))
                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                       <button type="submit" name="" class="btn btn-success">Araç Güncelle</button>
                       <button type="submit" name="delete" class="btn btn-success">Araç Sil</button>
-
                     </div>
                   </div>
                 </form>
