@@ -55,7 +55,7 @@ $user_deger=$_SESSION["a_id"];
                     <input type="text" value="<?php echo $cekilen_veri['marka'] ?>">
                     <input type="text" value="<?php echo $cekilen_veri['fiyat'] ?>">
                     <div class="caption">
-                      <button type="submit" ></button></a>
+                      <button type="submit" >Kirala</button></a>
                     </div>
                   </div>
                 </div> 
