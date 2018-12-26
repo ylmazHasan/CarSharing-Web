@@ -14,7 +14,7 @@ if(isset($_POST['update']))
   $tc=$_POST['tc'];
   $telno=$_POST['telno'];
   $parola=$_POST['parola'];
-  $profil_guncelle= "UPDATE  hesapacdb SET  kad='$kad',ad='$ad',soyad='$soyad',email='$email',tc='$tc',telno='$telno',parola='$parola' WHERE id='$user_deger'"; 
+  $profil_guncelle= "UPDATE  hesapacdb SET  kad='$kad',ad='$ad',soyad='$soyad',email='$email',tc='$tc',telno='$telno',parola='$parola' WHERE  id='$user_deger'"; 
 }
 ?> 
 <?php
@@ -77,73 +77,68 @@ if(isset($_POST['delete']))
                 $baglan = mysqli_connect("localhost", "root", "12345678", "carsharingdb");
                 $profil = " SELECT * FROM hesapacdb  WHERE   id='$user_deger'";
                 $sonuc = mysqli_query($baglan, $profil);
-                while ($cekilen_veri = mysqli_fetch_array($sonuc)) {
-                  $kad = $cekilen_veri['kad'];
-                  $ad = $cekilen_veri['ad'];
-                  $soyad = $cekilen_veri['soyad'];
-                  $email = $cekilen_veri['email'];
-                  $tc=$cekilen_veri['tc'];
-                  $telno=$cekilen_veri['telno'];
-                  $parola=$cekilen_veri['parola'];
-                  ?>
-                  <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Kullanıcı Adı* <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="text" name="kad"  id="first-name" required="required" value="<?php echo $cekilen_veri['kad'] ?>" class="form-control col-md-7 col-xs-12">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Ad* <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="text" id="last-name" name="ad"  required="required" value="<?php echo $cekilen_veri['ad'] ?>" class="form-control col-md-7 col-xs-12">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Soyad* </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input id="middle-name"  name="soyad" class="form-control col-md-7 col-xs-12" value="<?php echo $cekilen_veri['soyad'] ?>" type="text" name="middle-name">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">E-mail*</label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input id="middle-name"  name="email" class="form-control col-md-7 col-xs-12" value="<?php echo $cekilen_veri['email'] ?>" type="text" >
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tc*</label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input id="middle-name" name="tc" class="form-control col-md-7 col-xs-12" value="<?php echo $cekilen_veri['tc'] ?>" type="text" name="middle-name">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Telefon Numarası*</label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input id="middle-name" name="telno" class="form-control col-md-7 col-xs-12" value="<?php echo $cekilen_veri['telno'] ?>" type="text" name="middle-name">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Parola* </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input id="middle-name"  name="parola" class="form-control col-md-7 col-xs-12" value="<?php echo $cekilen_veri['parola'] ?>" type="text" name="middle-name">
-                    </div>
-                  </div>
 
-                  <div class="ln_solid"></div>
-                  <div class="form-group">
-                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                      <?php if ($profil_guncelle == true)?>
-                      <button type="submit" name="update" class="btn btn-success">Guncelle</button>
-                      <button type="submit" name="delete"  class="btn btn-success">Hesap Sil</button>
+                while ($cekilenveri = mysqli_fetch_array($sonuc)) {
+
+                    ?>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Kullanıcı Adı* <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" name="kad"  id="first-name" required="required" value="<?php echo $cekilenveri['kad'] ?>" class="form-control col-md-7 col-xs-12">
+                      </div>
                     </div>
-                  </div>
-                <?php   } ?>
-              </form>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Ad* <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" id="last-name" name="ad"  required="required" value="<?php echo $cekilenveri['ad'] ?>" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Soyad* </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="middle-name"  name="soyad" class="form-control col-md-7 col-xs-12" value="<?php echo $cekilenveri['soyad'] ?>" type="text" name="middle-name">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">E-mail*</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="middle-name"  name="email" class="form-control col-md-7 col-xs-12" value="<?php echo $cekilenveri['email'] ?>" type="text" >
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tc*</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="middle-name" name="tc" class="form-control col-md-7 col-xs-12" value="<?php echo $cekilenveri['tc'] ?>" type="text" name="middle-name">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Telefon Numarası*</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="middle-name" name="telno" class="form-control col-md-7 col-xs-12" value="<?php echo $cekilenveri['telno'] ?>" type="text" name="middle-name">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Parola* </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="middle-name"  name="parola" class="form-control col-md-7 col-xs-12" value="<?php echo $cekilenveri['parola'] ?>" type="text" name="middle-name">
+                      </div>
+                    </div>
+
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                      <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <?php if ($profil_guncelle == true)?>
+                       <button type="submit" name="update" value="update" class="btn btn-success">Guncelle</button> 
+                        <button type="submit" name="delete"  class="btn btn-success">Hesap Sil</button>
+                      </div>
+                    </div>
+                  <?php   } ?>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <?php include 'footer.php'; ?>
+        <?php include 'footer.php'; ?>

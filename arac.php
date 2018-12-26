@@ -121,10 +121,6 @@ if(isset($_POST['delete']))
       $profil = " SELECT * FROM arac  WHERE   parent_hesapid='$user_deger'";
       $sonuc = mysqli_query($baglan, $profil);
       while ($cekilen_veri = mysqli_fetch_array($sonuc)) {
-        $kad = $cekilen_veri['marka'];
-        $ad = $cekilen_veri['fiyat'];
-        $soyad = $cekilen_veri['aciklama'];
-        $email = $cekilen_veri['image'];
         ?>
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">

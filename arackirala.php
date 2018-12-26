@@ -40,33 +40,29 @@ $user_deger=$_SESSION["a_id"];
                 $id=(mysql_real_escape_string(abs(intval($_GET['arac_id']))));
                 $sqlekle="SELECT * FROM arac  Where arac_id=$id";
                 $sonuc = mysqli_query($baglan, $sqlekle);
+               
                 while ($cekilen_veri = mysqli_fetch_array($sonuc)) {
                  $cekilen_veri["arac_id"]."-".$cekilen_veri["marka"];
                  $cekilen_veri["arac_id"]."-".$cekilen_veri["fiyat"];
                  $cekilen_veri["arac_id"]."-".$cekilen_veri["aciklama"];
                  $cekilen_veri["arac_id"]."-".$cekilen_veri["image"];
                  ?>
-                 <div class="thumbnail" >
-
-                  <div class="image view view-first">
-                    <img style="width: 100%; display: block;" src="images/media.jpg" alt="image"/> 
-                  </div>
-                  <div class="caption">
-                    <input type="text" value="<?php echo $cekilen_veri['marka'] ?>">
-                    <input type="text" value="<?php echo $cekilen_veri['fiyat'] ?>">
-                    <div class="caption">
-                      <button type="submit" >Kirala</button></a>
-                    </div>
-                  </div>
-                </div> 
-              <?php }
-              ?>          
+                 <div class="image view view-first">
+                  <img style="width: 100%; display: block;" src="images/media.jpg" alt="image"/> 
+                </div>
+                <input type="text" value="<?php echo $cekilen_veri['marka'] ?>">
+                <input type="text" value="<?php echo $cekilen_veri['fiyat'] ?>">
+                <a href="ode.php?arac_id=<?php echo $cekilen_veri['arac_id']; ?>">  <button type="submit" >Kirala</button></a>
+              </div>
             </div>
-          </div>
+          <?php }
+          ?>          
         </div>
       </div>
     </div>
   </div>
+</div>
+</div>
 </div>
 </div>
 <!-- /page content -->

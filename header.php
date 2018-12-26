@@ -66,7 +66,7 @@ include 'baglan.php';
 
               </div>
             </div>
-          <?php   } ?>
+        
           <!-- /menu profile quick info -->
 
           <br />
@@ -92,7 +92,7 @@ include 'baglan.php';
             </div>
           </div>
           <!-- /sidebar menu -->
-
+  <?php   } ?>
           <!-- /menu footer buttons -->
           <div class="sidebar-footer hidden-small">
             <a data-toggle="tooltip" data-placement="top" title="Settings">
