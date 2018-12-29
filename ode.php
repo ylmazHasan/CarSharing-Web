@@ -36,7 +36,8 @@ if(isset($_POST['insert']))
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2> <small>CarSharing</small></h2>
+						<h2> <small>CarSharing</small>    
+						</h2> 
 						<ul class="nav navbar-right panel_toolbox">
 							<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 							</li>
@@ -47,30 +48,7 @@ if(isset($_POST['insert']))
 					</div>
 					<div class="x_content">
 						<br /><form id="demo-form2" action="ode.php" method="post" data-parsley-validate class="form-horizontal form-label-left">
-							<?php
-							$baglan = mysqli_connect("localhost", "root", "12345678", "carsharingdb");
-							$id=(mysql_real_escape_string(abs(intval($_GET['arac_id']))));
-							$sqlekle="SELECT * FROM arac  Where arac_id=$id";
-							$sonuc = mysqli_query($baglan, $sqlekle);
-							while ($cekilen_veri = mysqli_fetch_array($sonuc)) {
-								$cekilen_veri["arac_id"]."-".$cekilen_veri["marka"];
-								$cekilen_veri["arac_id"]."-".$cekilen_veri["fiyat"];
-								?>
-								<div class="form-group">
-									<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Marka <span class="required">*</span>
-									</label>
-									<div class="col-md-6 col-sm-6 col-xs-12">
-										<input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" value=" <?php echo $cekilen_veri['marka']; ?>">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Fiyat*<span class="required"></span>
-									</label>
-									<div class="col-md-6 col-sm-6 col-xs-12">
-										<input type="text" id="last-name" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $cekilen_veri['fiyat']; ?>">
-									</div>
-								</div>
-							<?php } ?>
+
 							<div class="form-group">
 								<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Kiralanacak Gün*</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
@@ -89,17 +67,32 @@ if(isset($_POST['insert']))
 									<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="kredi_ad">
 								</div>
 							</div>
-							<div class="ln_solid"></div>
-							<div class="form-group">
-								<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-									<button type="submit" name="insert" class="btn btn-primary">Ödeme Yap</button>
-								</div>
+							<?php  
+							$baglan = mysqli_connect("localhost", "root", "12345678", "carsharingdb");
+							$id=(mysql_real_escape_string(abs(intval($_GET['arac_id']))));
+							$sqlekle="SELECT * FROM arac  Where arac_id=$id";
+							$sonuc = mysqli_query($baglan, $sqlekle);
+
+							while ($cekilen_veri = mysqli_fetch_array($sonuc)){
+								$cekilen_veri['arac_id'];
+								?>
+								<div class="form-group">
+									<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Ödeme Yapılacak Tutar*</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="" value="<?php echo $cekilen_veri['fiyat']; ?>">
+									</div>
+									</div> <?php  } ?>
+									<div class="ln_solid"></div>
+									<div class="form-group">
+										<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+											<button type="submit" name="insert" class="btn btn-primary">Öde</button>
+										</div>
+									</div>
+								</form>
 							</div>
-						</form>
+						</div>
+
 					</div>
 				</div>
 
-			</div>
-		</div>
-
-		<?php include 'footer.php'; ?>
+				<?php include 'footer.php'; ?>
