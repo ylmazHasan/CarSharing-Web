@@ -1,36 +1,43 @@
  <?php 
  include 'khead.php';
 
-$baglan=mysqli_connect("localhost","root","12345678","carsharingdb");
+ $baglan=mysqli_connect("localhost","root","12345678","carsharingdb");
     // Form Gönderilmişmi Kontrolü Yapalım
     // Veritabanı Insert işlemleri Başlangıç.
-        if($_POST){
+ if($_POST){
             // Formdan Gelen Kayıtlar
-            $kad= $_POST["kad"];
-            $ad= $_POST["ad"];
-            $soyad= $_POST["soyad"];
-            $email= $_POST["email"];
-            $tc= $_POST["tc"];
-            $telno= $_POST["telno"];
-            $parola= $_POST["parola"];
-            if (empty($kad)||empty($ad)) {
-            	echo "Alanları boş geçmeyınız";
-            }
-            else{
-            	 // Veritabanına Ekleyelim.
-            $sqlekle= "INSERT INTO hesapacdb(kad,ad,soyad,email,tc,telno,parola) VALUES ('$kad','$ad','$soyad','$email','$tc','$telno','$parola')";
-            $kaydet= mysqli_query($baglan,$sqlekle);
-         if($kaydet){
-           
-   			   header(sprintf("Location: " .$_SERVER['login.php']));
- 		}
-		 else{
-   		  echo "İşlem başarısız..";
- 		    }
-            }
-        }
+  $kad= $_POST["kad"];
+  $ad= $_POST["ad"];
+  $soyad= $_POST["soyad"];
+  $email= $_POST["email"];
+  $tc= $_POST["tc"];
+  $telno= $_POST["telno"];
+  $parola= $_POST["parola"];
+  $parola_tekrar=$_POST["parola"];
+  if (empty($kad)||empty($ad)) {
+   echo "Alanları boş geçmeyınız";
+ }
+ else{
+   // Veritabanına Ekleyelim.
+  if($parola != $parola_tekrar)  {
+     echo "Parola ve parola tekrar eşleşmiyor";
+   }
+
+  else
+  {
+    $sqlekle= "INSERT INTO hesapacdb(kad,ad,soyad,email,tc,telno,parola) VALUES ('$kad','$ad','$soyad','$email','$tc','$telno','$parola')";
+    $kaydet= mysqli_query($baglan,$sqlekle);
+    if($kaydet){
+
+     header(sprintf("Location: " .$_SERVER['login.php']));
+   }}
+ 
+
+ }
+}
         //Veritabanı Insert işlemleri Son.
-   ?>
+
+?>
 <body class="login">
   <div>
     <a class="hiddenanchor" id="signup"></a>
@@ -57,11 +64,14 @@ $baglan=mysqli_connect("localhost","root","12345678","carsharingdb");
             <div>
               <input type="text" required="" name="tc"  placeholder="TC" />
             </div>
-             <div>
+            <div>
               <input type="text" required=""  name="telno" placeholder="Telefon No"  />
             </div>
             <div>
-              <input type="text"  required="" name="parola"  placeholder="Parola"  />
+              <input type="password"  required="" name="parola"  placeholder="Parola"  />
+            </div>
+            <div>
+              <input type="password"  required="" name="parola_tekrar"  placeholder="Parola Tekrar"  />
             </div>
             <br>
 
@@ -85,17 +95,17 @@ $baglan=mysqli_connect("localhost","root","12345678","carsharingdb");
               </div>
             </div>
           </form>
-          </form>
-        </section>
-      </div>
+        </form>
+      </section>
+    </div>
 
-      <div id="register" class="animate form registration_form">
-        <section class="login_content">
-           
-        </section>
-      </div>
+    <div id="register" class="animate form registration_form">
+      <section class="login_content">
+
+      </section>
     </div>
   </div>
+</div>
 
 </body>
 </html>

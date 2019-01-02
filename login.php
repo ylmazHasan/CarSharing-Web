@@ -49,7 +49,7 @@
 
 
             <div>
-              <input type="parola" name="parola" class="form-control" placeholder="Parola" required="" />
+              <input type="password" name="parola" class="form-control"  placeholder="Parola" required="" />
             </div>
 
             <div>

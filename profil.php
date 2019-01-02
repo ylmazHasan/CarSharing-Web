@@ -1,12 +1,11 @@
 <?php
 session_start();
-
 include 'header.php';
 include 'baglan.php';
+$user_deger=$_SESSION["user_id"];
 if(isset($_POST['update']))
 {
-  session_start();
-  $user_deger=$_SESSION["user_id"];
+ 
   $kad = $_POST['kad'];
   $ad = $_POST['ad'];
   $soyad = $_POST['soyad'];
@@ -110,19 +109,19 @@ if(isset($_POST['delete']))
                     <div class="form-group">
                       <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tc*</label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="middle-name" name="tc" class="form-control col-md-7 col-xs-12" value="<?php echo $cekilenveri['tc'] ?>" type="text" name="middle-name">
+                        <input id="middle-name" name="tc" class="form-control col-md-7 col-xs-12" value="<?php echo $cekilenveri['tc'] ?>" type="text" >
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Telefon Numarası*</label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="middle-name" name="telno" class="form-control col-md-7 col-xs-12" value="<?php echo $cekilenveri['telno'] ?>" type="text" name="middle-name">
+                        <input id="middle-name" name="telno" class="form-control col-md-7 col-xs-12" value="<?php echo $cekilenveri['telno'] ?>" type="text" >
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Parola* </label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="middle-name"  name="parola" class="form-control col-md-7 col-xs-12" value="<?php echo $cekilenveri['parola'] ?>" type="text" name="middle-name">
+                        <input id="middle-name"  name="parola" class="form-control col-md-7 col-xs-12" value="<?php echo $cekilenveri['parola'] ?>" type="password">
                       </div>
                     </div>
 

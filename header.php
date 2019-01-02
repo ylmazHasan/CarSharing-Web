@@ -66,11 +66,11 @@ include 'baglan.php';
 
               </div>
             </div>
-        
-          <!-- /menu profile quick info -->
 
-          <br />
+            <!-- /menu profile quick info -->
 
+            <br />
+          <?php   } ?>
           <!-- sidebar menu -->
           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
@@ -84,69 +84,70 @@ include 'baglan.php';
                 </li>
                 <li><a><i class="fa fa-send"></i> Geçmiş Yolculuk <span class=""></span></a>
                 </li>
-                <li><a><i class="fa fa-money"></i> Ödemelerim <span class=""></span></a>
-                </li>
-                <li><a href="login.php"><i class="fa fa-wrench"></i> Çıkış Yap <span class=""></span></a>
-                </li>
-              </ul>
+                              
+                 <li><a href="odemelerim.php"><i class="fa fa-money"></i> Ödemelerim <span class=""></span></a>
+                 </li>
+               <li><a href="login.php"><i class="fa fa-wrench"></i> Çıkış Yap <span class=""></span></a>
+               </li>
+             </ul>
+           </div>
+         </div>
+         <!-- /sidebar menu -->
+
+         <!-- /menu footer buttons -->
+         <div class="sidebar-footer hidden-small">
+          <a data-toggle="tooltip" data-placement="top" title="Settings">
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="Lock">
+            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="Logout">
+            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+          </a>
+        </div>
+        <!-- /menu footer buttons -->
+      </div>
+    </div>
+
+    <?php 
+    session_start();
+    $user_deger=$_SESSION["user_id"];
+    $baglan = mysqli_connect("localhost", "root", "12345678", "carsharingdb");
+    $profil = " SELECT * FROM hesapacdb  WHERE   id='$user_deger'";
+    $sonuc = mysqli_query($baglan, $profil);
+    while ($cekilen_veri = mysqli_fetch_array($sonuc)) {
+      $ad = $cekilen_veri['ad'];
+      $soyad = $cekilen_veri['soyad'];
+
+      ?>
+      <!-- top navigation -->
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
             </div>
-          </div>
-          <!-- /sidebar menu -->
-  <?php   } ?>
-          <!-- /menu footer buttons -->
-          <div class="sidebar-footer hidden-small">
-            <a data-toggle="tooltip" data-placement="top" title="Settings">
-              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-              <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="Lock">
-              <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="Logout">
-              <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-            </a>
-          </div>
-          <!-- /menu footer buttons -->
+
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <img src="images/img.jpg" alt=""><?php echo $cekilen_veri['ad'];  
+                  echo " ";
+                  echo $cekilen_veri['soyad'];
+                  ?>
+                  <span class=" fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="login.php"><i class="fa fa-sign-out pull-right"></i>Çıkış Yap</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
-
-      <?php 
-      session_start();
-      $user_deger=$_SESSION["user_id"];
-      $baglan = mysqli_connect("localhost", "root", "12345678", "carsharingdb");
-      $profil = " SELECT * FROM hesapacdb  WHERE   id='$user_deger'";
-      $sonuc = mysqli_query($baglan, $profil);
-      while ($cekilen_veri = mysqli_fetch_array($sonuc)) {
-        $ad = $cekilen_veri['ad'];
-        $soyad = $cekilen_veri['soyad'];
-        
-        ?>
-        <!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
-
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt=""><?php echo $cekilen_veri['ad'];  
-                    echo " ";
-                    echo $cekilen_veri['soyad'];
-                    ?>
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="login.php"><i class="fa fa-sign-out pull-right"></i>Çıkış Yap</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-        <!-- /top navigation -->
-        <?php   } ?>
+      <!-- /top navigation -->
+      <?php   } ?>

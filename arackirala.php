@@ -4,7 +4,7 @@ session_start();
 include 'header.php';
 $user_deger=$_SESSION["user_id"];
 $baglan=mysqli_connect("localhost","root","12345678","carsharingdb");
- $id=(mysql_real_escape_string(abs(intval($_GET['arac_id']))));
+$id=(mysql_real_escape_string(abs(intval($_GET['arac_id']))));
 if(isset($_POST['insert']))
 {
   // Formdan Gelen Kayıtlar
@@ -111,15 +111,7 @@ if(isset($_POST['insert']))
         <ul class="nav navbar-right panel_toolbox">
           <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
           </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Settings 1</a>
-              </li>
-              <li><a href="#">Settings 2</a>
-              </li>
-            </ul>
-          </li>
+
           <li><a class="close-link"><i class="fa fa-close"></i></a>
           </li>
         </ul>
@@ -131,7 +123,7 @@ if(isset($_POST['insert']))
           <div class="form-group">
             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Kiralanacak Gün*</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="gun">
+              <input id="gun" class="form-control col-md-7 col-xs-12" type="text" name="gun">
             </div>
           </div>
           <div class="form-group">
@@ -151,35 +143,25 @@ if(isset($_POST['insert']))
           $id=(mysql_real_escape_string(abs(intval($_GET['arac_id']))));
           $sqlekle="SELECT * FROM arac  Where arac_id=$id";
           $sonuc = mysqli_query($baglan, $sqlekle);
-
           while ($cekilen_veri = mysqli_fetch_array($sonuc)){
-            $cekilen_veri['arac_id'];
-            ?>
+           $odenenfiyat=$cekilen_veri['fiyat'];
+           ?>
+           <div class="form-group">
+            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Ödeme Yapılacak Tutar*</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="odeme_tutar" value="<?php echo $cekilen_veri['fiyat']; ?>">
+            </div>
+
+            </div> <?php  } ?>
+            <div class="ln_solid"></div>
             <div class="form-group">
-              <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Ödeme Yapılacak Tutar*</label>
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="odeme_tutar" value="<?php echo $cekilen_veri['fiyat']; ?>">
+              <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                <button type="submit" name="insert" class="btn btn-primary">Öde</button>
               </div>
-              </div> <?php  } ?>
-              <div class="ln_solid"></div>
-              <div class="form-group">
-                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                  <button type="submit" name="insert" class="btn btn-primary">Öde</button>
-                </div>
-              </div>
-              <div class="ln_solid"></div>
-              <div class="form-group">
-                <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-
-                </div>
-              </div>
-
-            </form>
-          </div>
+            </div>   
+          </form>
         </div>
-
-
-        <div class="col-xs-12">
-          <?php
-          include 'footer.php';
-          ?></div>
+      </div>
+      <?php
+      include 'footer.php';
+      ?>
