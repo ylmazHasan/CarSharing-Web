@@ -81,6 +81,8 @@ include 'baglan.php';
                 </li>
                 <li><a href="admin_ekle.php"><i class="fa fa-rocket"></i> Admin Ekle <span class=""></span></a>
                 </li>
+                    <li><a href="site_hakkinda_ekle.php"><i class="fa fa-rocket"></i> Site Hakkında <span class=""></span></a>
+                </li>
 
               </ul>
             </div>

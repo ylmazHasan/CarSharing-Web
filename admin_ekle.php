@@ -140,8 +140,8 @@
                 <div class="form-group">
                   <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                     <?php if ($profil_guncelle == true)?>
-                    <button type="submit" name="update" value="update" class="btn btn-success">Guncelle</button> 
-                    <button type="submit" name="delete"  class="btn btn-success">Hesap Sil</button>
+                    <button type="submit" name="post"  class="btn btn-success">Admin Ekle</button> 
+            
                   </div>
                 </div>
               <?php   } ?>

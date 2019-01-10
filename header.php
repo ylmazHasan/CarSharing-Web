@@ -87,6 +87,8 @@ include 'baglan.php';
                               
                  <li><a href="odemelerim.php"><i class="fa fa-money"></i> Ödemelerim <span class=""></span></a>
                  </li>
+                   <li><a href="site_hakkinda.php"><i class="fa fa-money"></i> Site Hakkında <span class=""></span></a>
+                 </li>
                <li><a href="login.php"><i class="fa fa-wrench"></i> Çıkış Yap <span class=""></span></a>
                </li>
              </ul>
