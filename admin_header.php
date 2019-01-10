@@ -76,10 +76,12 @@ include 'baglan.php';
             <div class="menu_section">
               <h3>Menü</h3>
               <ul class="nav side-menu">
-           
-                <li><a href="kullanicilar.php"><i class="fa fa-car"></i> Kullanıcılar <span class=""></span></a>
+
+                <li><a href="kullanicilar.php"><i class="fa fa-rocket"></i> Kullanıcılar <span class=""></span></a>
                 </li>
-        
+                <li><a href="admin_ekle.php"><i class="fa fa-rocket"></i> Admin Ekle <span class=""></span></a>
+                </li>
+
               </ul>
             </div>
           </div>
