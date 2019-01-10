@@ -14,26 +14,27 @@
   $telno= $_POST["telno"];
   $parola= $_POST["parola"];
   $parola_tekrar=$_POST["parola"];
+  $yetki=$_POST["yetki"];
   if (empty($kad)||empty($ad)) {
    echo "Alanları boş geçmeyınız";
  }
  else{
    // Veritabanına Ekleyelim.
   if($parola != $parola_tekrar)  {
-     echo "Parola ve parola tekrar eşleşmiyor";
-   }
+   echo "Parola ve parola tekrar eşleşmiyor";
+ }
 
-  else
-  {
-    $sqlekle= "INSERT INTO hesapacdb(kad,ad,soyad,email,tc,telno,parola) VALUES ('$kad','$ad','$soyad','$email','$tc','$telno','$parola')";
-    $kaydet= mysqli_query($baglan,$sqlekle);
-    if($kaydet){
+ else
+ {
+  $sqlekle= "INSERT INTO hesapacdb(kad,ad,soyad,email,tc,telno,parola,yetki) VALUES ('$kad','$ad','$soyad','$email','$tc','$telno','$parola','$yetki')";
+  $kaydet= mysqli_query($baglan,$sqlekle);
+  if($kaydet){
 
-     header(sprintf("Location: " .$_SERVER['login.php']));
-   }}
+   header(sprintf("Location: " .$_SERVER['login.php']));
+ }}
  
 
- }
+}
 }
         //Veritabanı Insert işlemleri Son.
 
@@ -74,7 +75,7 @@
               <input type="password"  required="" name="parola_tekrar"  placeholder="Parola Tekrar"  />
             </div>
             <br>
-
+            <?php $yetki=0; ?>
             <div>
               <button type="submit" name="_POST">Kaydol</button>
             </div>

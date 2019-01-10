@@ -8,14 +8,19 @@
 
   $email = $_POST['email'];
   $parola = $_POST['parola'];
+  
   if (empty($email) || empty($parola)) {
+  
     $bilgi_email="*Boş geçmeyiniz alanları";
 
-  } else {
+  } 
+  else {
+    $yetki=1;
         //$email = $con->escape_string($_POST['email']);
-    $sonuc ="SELECT * FROM hesapacdb WHERE email='$email' AND parola='$parola' AND yetki=0 ";
+    $sonuc ="SELECT * FROM hesapacdb WHERE email='$email' AND parola='$parola' AND yetki='$yetki' ";
     $result = mysqli_query($baglan,$sonuc);
     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+    echo $row;
     $active = $row['active'];
     $count= mysqli_num_rows($result);
     if($count == 1){
@@ -23,7 +28,7 @@
       $userad=$row['id'];
       var_dump($userad);
       $_SESSION["user_id"]=$userad;
-      header('Location: index.php');
+      header('Location: admin_ayarlar.php');
     }
     else{
       $bilgi_email="E-mail veya parola yanlıştır";
@@ -40,18 +45,15 @@
     <div class="login_wrapper">
       <div class="animate form login_form">
         <section class="login_content">
-          <form action="login.php" method="post">
-            <h1>Kullanıcı Giriş Paneli</h1>
+          <form action="admin_login.php" method="post">
+            <h1>Admin Giriş Paneli</h1>
 
             <div>
               <input type="text" name="email" class="form-control" placeholder="Email" required="" />
             </div>
-
-
             <div>
               <input type="password" name="parola" class="form-control"  placeholder="Parola" required="" />
             </div>
-
             <div>
               <button  type="submit" name="login">Giriş Yap</button>
             </div>
@@ -59,10 +61,7 @@
             <div class="clearfix"></div>
 
             <div class="separator">
-              <p class="change_link">Yeni misiniz?
-                <a href="register.php" class="to_register"> Hesap Aç </a>
-              </p>
-
+           
               <div class="clearfix"></div>
               <br />
 
